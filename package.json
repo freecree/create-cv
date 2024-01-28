@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": "https://freecree.github.io/create-cv",
   "scripts": {
     "lint": "eslint --ext js,ts,tsx",
     "start": "webpack serve",
+    "deploy": "gh-pages -d build",
     "build:dev": "webpack --env mode=development",
     "build:prod": "webpack --env mode=production"
   },
@@ -37,6 +39,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
     "eslint-plugin-react": "^7.33.2",
+    "gh-pages": "^6.1.1",
     "prettier": "3.2.4",
     "style-loader": "^3.3.4",
     "ts-node": "^10.9.2"

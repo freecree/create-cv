@@ -17,12 +17,13 @@ function AvatarUpload() {
 
   const beforeUpload = (file: FileType) => {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+
     if (!isJpgOrPng) {
-      message.error('You can only upload JPG/PNG file!');
+      message.error('Ви можете лише завантажувати JPG/PNG файли');
     }
     const isLt2M = file.size / 1024 / 1024 < 2;
     if (!isLt2M) {
-      message.error('Image must smaller than 2MB!');
+      message.error("Зображення має не перевищувати об'єм 2MB!");
     }
     return isJpgOrPng && isLt2M;
   };
@@ -51,7 +52,6 @@ function AvatarUpload() {
     <Upload
       name='avatar'
       listType='picture-card'
-      className='avatar-uploader'
       showUploadList={false}
       beforeUpload={beforeUpload}
       onChange={handleChange}
