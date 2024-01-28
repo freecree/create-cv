@@ -1,3 +1,4 @@
+import CVForm from './cv-form/CVForm';
 import Header from './header/Header';
 import styled from 'styled-components';
 
@@ -12,6 +13,7 @@ function App() {
   return (
     <AppWrapper>
       <Header />
+      <CVForm />
     </AppWrapper>
   );
 }
