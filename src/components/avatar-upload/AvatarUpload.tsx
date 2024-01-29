@@ -19,11 +19,11 @@ function AvatarUpload() {
     const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
 
     if (!isJpgOrPng) {
-      message.error('Ви можете лише завантажувати JPG/PNG файли');
+      message.error('Ви можете завантажувати лише JPG/PNG файли');
     }
     const isLt2M = file.size / 1024 / 1024 < 2;
     if (!isLt2M) {
-      message.error("Зображення має не перевищувати об'єм 2MB!");
+      message.error("Зображення не має перевищувати об'єм 2MB!");
     }
     return isJpgOrPng && isLt2M;
   };
@@ -34,13 +34,20 @@ function AvatarUpload() {
       return;
     }
     if (info.file.status === 'done') {
-      // Get this url from response in real world.
       getBase64(info.file.originFileObj as FileType, (url) => {
         setLoading(false);
         setImageUrl(url);
       });
     }
   };
+
+  const dummyRequest: UploadProps['customRequest'] = ({ file, onSuccess }) => {
+    console.log(file, onSuccess);
+    setTimeout(() => {
+      onSuccess('ok');
+    }, 0);
+  };
+
   const uploadButton = (
     <button style={{ border: 0, background: 'none' }} type='button'>
       {loading ? <LoadingOutlined /> : ''}
@@ -55,7 +62,7 @@ function AvatarUpload() {
       showUploadList={false}
       beforeUpload={beforeUpload}
       onChange={handleChange}
-      action='https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188'
+      customRequest={dummyRequest}
     >
       {imageUrl ? (
         <img src={imageUrl} alt='avatar' style={{ width: '100%' }} />
