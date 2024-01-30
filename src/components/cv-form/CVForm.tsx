@@ -8,6 +8,7 @@ function CVForm() {
       style={{ marginTop: '20px' }}
       initialValues={{ remember: true }}
       autoComplete='off'
+      layout='vertical'
     >
       <PersonalInfo />
     </Form>
