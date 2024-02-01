@@ -11,8 +11,8 @@ function Work() {
         <Form.List name='works' initialValue={[{}]}>
           {(fields, { add, remove }) => (
             <>
-              {fields.map((field, i) => (
-                <WorkCard key={i} field={field} remove={remove} />
+              {fields.map((field) => (
+                <WorkCard key={field.key} field={field} remove={remove} />
               ))}
               <Button type='dashed' onClick={() => add()} block>
                 Додати ще
