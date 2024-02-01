@@ -2,6 +2,7 @@ import { Form } from 'antd';
 import PersonalInfo from '../personal-info/PersonalInfo';
 import Education from '../education/Education';
 import Skills from '../skills/Skills';
+import Work from '../work/Work';
 
 function CVForm() {
   return (
@@ -15,6 +16,7 @@ function CVForm() {
       <PersonalInfo />
       <Education />
       <Skills />
+      <Work />
     </Form>
   );
 }
