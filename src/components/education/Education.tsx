@@ -1,13 +1,9 @@
-import { Form, Input, DatePicker, Space, Select } from 'antd';
-import type { DatePickerProps } from 'antd';
+import { Form, Input, Space, Select } from 'antd';
+import DatePicker from '../date-picker/DatePicker';
 import FormSectionTitle from '../form-section-title/FormSectionTitle';
 import FormSectionWrapper from '../form-section-wrapper/FormSectionWrapper';
 
 function Education() {
-  const onChange: DatePickerProps['onChange'] = (date, dateString) => {
-    console.log(date, dateString);
-  };
-
   const degreeOptions = [
     {
       value: 'master',
@@ -28,11 +24,7 @@ function Education() {
         </Form.Item>
         <Form.Item label='Дата завершення'>
           <Space direction='vertical'>
-            <DatePicker
-              style={{ width: '170px' }}
-              onChange={onChange}
-              placeholder='Дата завершення'
-            />
+            <DatePicker placeholder='Дата завершення' />
           </Space>
         </Form.Item>
         <Form.Item label='Ступінь' style={{ width: '170px' }}>
