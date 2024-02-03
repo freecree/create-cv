@@ -3,16 +3,27 @@ import AvatarUpload from '../avatar-upload/AvatarUpload';
 import FormSectionTitle from '../form-section-title/FormSectionTitle';
 import FormSectionWrapper from '../form-section-wrapper/FormSectionWrapper';
 import DatePicker from '../date-picker/DatePicker';
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../../store/personalInfoSlice';
+import { setName } from '../../store/personalInfoSlice';
 
 function PersonalInfo() {
+  const name = useSelector((state: RootState) => state.personalInfo.name);
+  const dispatch = useDispatch();
+
+  console.log('Name from reduser:', name);
+
   return (
     <div>
       <FormSectionTitle>Персональна інформація</FormSectionTitle>
       <FormSectionWrapper>
-        <Form.Item label='Фіо'>
-          <Input placeholder='Фіо' />
+        <Form.Item name={'name'} label='Фіо'>
+          <Input
+            onChange={(e) => dispatch(setName(e.target.value))}
+            placeholder='Фіо'
+          />
         </Form.Item>
-        <Form.Item label='Місце проживання'>
+        <Form.Item name={'location'} label='Місце проживання'>
           <Input placeholder='Місце проживання' />
         </Form.Item>
         <Form.Item label='Номер телефону'>
