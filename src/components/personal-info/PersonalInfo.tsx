@@ -3,13 +3,17 @@ import AvatarUpload from '../avatar-upload/AvatarUpload';
 import FormSectionTitle from '../form-section-title/FormSectionTitle';
 import FormSectionWrapper from '../form-section-wrapper/FormSectionWrapper';
 import DatePicker from '../date-picker/DatePicker';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../store/personalInfoSlice';
-import { setName } from '../../store/personalInfoSlice';
+import { usePersonalInfoSelector } from '../../hooks/personal-info/usePersonalInfoSelector';
+import { usePersonalInfoDispatch } from '../../hooks/personal-info/usePersonalInfoDispatch';
+import { setName } from '../../store/personal-info/personalInfoSlice';
 
 function PersonalInfo() {
-  const name = useSelector((state: RootState) => state.personalInfo.name);
-  const dispatch = useDispatch();
+  const name = usePersonalInfoSelector((state) => state.personalInfo.name);
+  const dispatch = usePersonalInfoDispatch();
+
+  function handleChangeName(e: React.ChangeEvent<HTMLInputElement>) {
+    dispatch(setName(e.target.value));
+  }
 
   console.log('Name from reduser:', name);
 
@@ -18,10 +22,7 @@ function PersonalInfo() {
       <FormSectionTitle>Персональна інформація</FormSectionTitle>
       <FormSectionWrapper>
         <Form.Item name={'name'} label='Фіо'>
-          <Input
-            onChange={(e) => dispatch(setName(e.target.value))}
-            placeholder='Фіо'
-          />
+          <Input onChange={handleChangeName} placeholder='Фіо' />
         </Form.Item>
         <Form.Item name={'location'} label='Місце проживання'>
           <Input placeholder='Місце проживання' />
