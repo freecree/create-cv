@@ -3,17 +3,17 @@ import AvatarUpload from '../avatar-upload/AvatarUpload';
 import FormSectionTitle from '../form-section-title/FormSectionTitle';
 import FormSectionWrapper from '../form-section-wrapper/FormSectionWrapper';
 import DatePicker from '../date-picker/DatePicker';
-import { usePersonalInfoSelector } from '../../hooks/personal-info/usePersonalInfoSelector';
-import { usePersonalInfoDispatch } from '../../hooks/personal-info/usePersonalInfoDispatch';
+import { usePersonalInfoSelector } from '../../hooks/redux-hooks';
+import { usePersonalInfoDispatch } from '../../hooks/redux-hooks';
 import { setName } from '../../store/personal-info/personalInfoSlice';
 
 function PersonalInfo() {
   const name = usePersonalInfoSelector((state) => state.personalInfo.name);
   const dispatch = usePersonalInfoDispatch();
 
-  function handleChangeName(e: React.ChangeEvent<HTMLInputElement>) {
+  const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setName(e.target.value));
-  }
+  };
 
   console.log('Name from reduser:', name);
 
