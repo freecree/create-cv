@@ -4,19 +4,19 @@ import FormSectionTitle from '../form-section-title/FormSectionTitle';
 import FormSectionWrapper from '../form-section-wrapper/FormSectionWrapper';
 import DatePicker from '../date-picker/DatePicker';
 import type { DatePickerProps } from 'antd';
-import { usePersonalInfoSelector } from '../../hooks/redux-hooks';
-import { usePersonalInfoDispatch } from '../../hooks/redux-hooks';
+import { useAppSelector } from '../../hooks/redux-hooks';
+import { useAppDispatch } from '../../hooks/redux-hooks';
 import {
   setName,
   setLocation,
   setPhone,
   setBirth,
   setAvatar,
-} from '../../store/personal-info/personalInfoSlice';
+} from '../../slices/personalInfoSlice';
 
 function PersonalInfo() {
-  const inputs = usePersonalInfoSelector((state) => state.personalInfo);
-  const dispatch = usePersonalInfoDispatch();
+  const inputs = useAppSelector((state) => state.personalInfo);
+  const dispatch = useAppDispatch();
 
   console.log('state: ', inputs);
 
