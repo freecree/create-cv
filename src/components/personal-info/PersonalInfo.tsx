@@ -4,7 +4,6 @@ import FormSectionTitle from '../form-section-title/FormSectionTitle';
 import FormSectionWrapper from '../form-section-wrapper/FormSectionWrapper';
 import DatePicker from '../date-picker/DatePicker';
 import type { DatePickerProps } from 'antd';
-import { useAppSelector } from '../../hooks/redux-hooks';
 import { useAppDispatch } from '../../hooks/redux-hooks';
 import {
   setName,
@@ -15,10 +14,7 @@ import {
 } from '../../slices/personalInfoSlice';
 
 function PersonalInfo() {
-  const inputs = useAppSelector((state) => state.personalInfo);
   const dispatch = useAppDispatch();
-
-  console.log('state: ', inputs);
 
   const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setName(e.target.value));

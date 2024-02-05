@@ -13,7 +13,6 @@ import {
 
 function Education() {
   const inputs = useAppSelector((state) => state.education);
-  console.log('education inputs: ', inputs);
   const dispatch = useAppDispatch();
 
   const handleChangeInstitution = (e: React.ChangeEvent<HTMLInputElement>) => {
