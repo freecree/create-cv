@@ -1,16 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
 
 export interface PersonalInfoState {
   name: string;
   location: string;
   phone: string;
+  birth: string;
+  avatar: string;
 }
 
 const initialState: PersonalInfoState = {
   name: '',
   location: '',
   phone: '',
+  birth: '',
+  avatar: '',
 };
 
 export const personalInfoSlice = createSlice({
@@ -20,11 +23,21 @@ export const personalInfoSlice = createSlice({
     setName: (state, action) => {
       state.name = action.payload;
     },
-    updateValues: (state, action: PayloadAction<PersonalInfoState>) => {
-      Object.assign(state, action.payload);
+    setLocation: (state, action) => {
+      state.location = action.payload;
+    },
+    setPhone: (state, action) => {
+      state.phone = action.payload;
+    },
+    setBirth: (state, action) => {
+      state.birth = action.payload;
+    },
+    setAvatar: (state, action) => {
+      state.avatar = action.payload;
     },
   },
 });
 
-export const { setName, updateValues } = personalInfoSlice.actions;
+export const { setName, setLocation, setPhone, setBirth, setAvatar } =
+  personalInfoSlice.actions;
 export default personalInfoSlice.reducer;
