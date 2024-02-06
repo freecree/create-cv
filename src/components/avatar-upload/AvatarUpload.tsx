@@ -9,7 +9,7 @@ interface AvatarUploadProps {
   onUpload: (avatarUrl: string) => void;
 }
 
-function AvatarUpload({onUpload}: AvatarUploadProps) {
+function AvatarUpload({ onUpload }: AvatarUploadProps) {
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>();
 
