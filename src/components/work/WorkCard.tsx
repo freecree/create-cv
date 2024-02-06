@@ -17,7 +17,6 @@ function WorkCard({ field, remove }: WorkCardProps) {
     <WorkCardStyle
       size='small'
       title={`Місце роботи ${field.name + 1}`}
-      key={field.key}
       extra={
         field.name > 0 && (
           <CloseOutlined

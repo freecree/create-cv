@@ -12,7 +12,7 @@ import {
 } from '../../slices/educationSlice';
 
 function Education() {
-  const inputs = useAppSelector((state) => state.education);
+  const education = useAppSelector((state) => state.education);
   const dispatch = useAppDispatch();
 
   const handleChangeInstitution = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,7 +57,7 @@ function Education() {
         <Form.Item label='Ступінь' style={{ width: '170px' }}>
           <Select
             onChange={handleChangeDegree}
-            defaultValue={inputs.degree}
+            defaultValue={education.degree}
             options={degreeOptions}
           />
         </Form.Item>
