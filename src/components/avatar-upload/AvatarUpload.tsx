@@ -5,7 +5,11 @@ import type { GetProp, UploadProps } from 'antd';
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
-function AvatarUpload() {
+interface AvatarUploadProps {
+  onUpload: (avatarUrl: string) => void;
+}
+
+function AvatarUpload({onUpload}: AvatarUploadProps) {
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState<string>();
 
@@ -30,6 +34,7 @@ function AvatarUpload() {
     }
     if (info.file.status === 'done') {
       getBase64(info.file.originFileObj as FileType, (url) => {
+        onUpload(url);
         setLoading(false);
         setImageUrl(url);
       });

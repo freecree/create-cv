@@ -1,6 +1,8 @@
 import { Form, Input, FormListFieldData, DatePicker } from 'antd';
 import { WorkCardStyle } from './WorkCardStyle';
 import { CloseOutlined } from '@ant-design/icons';
+import locale from 'antd/es/date-picker/locale/uk_UA';
+import 'dayjs/locale/uk';
 
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
@@ -15,7 +17,6 @@ function WorkCard({ field, remove }: WorkCardProps) {
     <WorkCardStyle
       size='small'
       title={`Місце роботи ${field.name + 1}`}
-      key={field.key}
       extra={
         field.name > 0 && (
           <CloseOutlined
@@ -33,7 +34,7 @@ function WorkCard({ field, remove }: WorkCardProps) {
         <Input placeholder='Посада' />
       </Form.Item>
       <Form.Item label='Період роботи'>
-        <RangePicker />
+        <RangePicker locale={locale} placeholder={['Початок', 'Кінець']} />
       </Form.Item>
       <Form.Item label='Період роботи'>
         <TextArea rows={4} />
