@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { nanoid } from '@reduxjs/toolkit';
 
-interface Work {
+export interface Work {
+  id: string;
   company: string;
   position: string;
   workPeriod: string[];
@@ -8,6 +10,7 @@ interface Work {
 }
 
 const initialWork: Work = {
+  id: nanoid(),
   company: '',
   position: '',
   workPeriod: [],
@@ -25,41 +28,63 @@ export const worksSlice = createSlice({
   initialState,
   reducers: {
     addWork: (state) => {
-      state.works.push(initialWork);
+      state.works.push({ ...initialWork, id: nanoid() });
     },
     removeWork: (state, action) => {
-      state.works.splice(action.payload, 1);
+      const updatedWorks = state.works.filter(
+        (work) => work.id !== action.payload,
+      );
+      state.works = updatedWorks;
     },
     setCompany: (
       state,
-      action: PayloadAction<{ index: number; value: string }>,
+      action: PayloadAction<{ id: string; value: string }>,
     ) => {
-      const { index, value } = action.payload;
-      state.works[index].company = value;
+      const { id, value } = action.payload;
+      const workIndex = state.works.findIndex((work) => work.id === id);
+      if (workIndex !== -1) {
+        state.works[workIndex].company = value;
+      }
     },
     setPosition: (
       state,
-      action: PayloadAction<{ index: number; value: string }>,
+      action: PayloadAction<{ id: string; value: string }>,
     ) => {
-      const { index, value } = action.payload;
-      state.works[index].position = value;
+      const { id, value } = action.payload;
+      const workIndex = state.works.findIndex((work) => work.id === id);
+      if (workIndex !== -1) {
+        state.works[workIndex].position = value;
+      }
     },
     setWorkPeriod: (
       state,
-      action: PayloadAction<{ index: number; value: string[] }>,
+      action: PayloadAction<{ id: string; value: string[] }>,
     ) => {
-      const { index, value } = action.payload;
-      state.works[index].workPeriod = value;
+      const { id, value } = action.payload;
+      const workIndex = state.works.findIndex((work) => work.id === id);
+      if (workIndex !== -1) {
+        state.works[workIndex].workPeriod = value;
+      }
     },
     setDescription: (
       state,
-      action: PayloadAction<{ index: number; value: string }>,
+      action: PayloadAction<{ id: string; value: string }>,
     ) => {
-      const { index, value } = action.payload;
-      state.works[index].description = value;
+      const { id, value } = action.payload;
+      const workIndex = state.works.findIndex((work) => work.id === id);
+      if (workIndex !== -1) {
+        state.works[workIndex].description = value;
+      }
     },
   },
 });
 
-export const { addWork, removeWork, setCompany, setPosition, setWorkPeriod, setDescription } = worksSlice.actions;
+export const {
+  addWork,
+  removeWork,
+  setCompany,
+  setPosition,
+  setWorkPeriod,
+  setDescription,
+} = worksSlice.actions;
 export default worksSlice.reducer;
