@@ -3,6 +3,7 @@ import PersonalInfo from '../personal-info/PersonalInfo';
 import Education from '../education/Education';
 import Skills from '../skills/Skills';
 import Work from '../work/Work';
+import CVModal from '../cv-modal/CVModal';
 
 function CVForm() {
   return (
@@ -14,6 +15,7 @@ function CVForm() {
       <Education />
       <Skills />
       <Work />
+      <CVModal />
     </Form>
   );
 }
