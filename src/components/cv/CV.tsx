@@ -3,14 +3,16 @@ import { useRef } from 'react';
 import Avatar from './avatar/Avatar';
 import PersonalInfo from './personal-info/PersonalInfo';
 import Skills from './skills/Skills';
-import DownloadButton from './download-button/DownloadButton';
-import { CVStyle } from './CVStyle';
-import LeftBar from './left-bar/LeftBar';
-import MainContent from './main-content/MainContent';
 import Title from './title/Title';
-import Position from './position/Position';
 import Education from './education/Education';
 import WorkExperience from './work-experience/WorkExperience';
+import {
+  CVStyle,
+  DownloadButtonStyle,
+  LeftBarStyle,
+  MainContentStyle,
+  PositionStyle
+} from './CVStyle';
 
 function CV() {
   const cvRef = useRef(null);
@@ -20,21 +22,21 @@ function CV() {
 
   return (
     <>
-      <DownloadButton onClick={handlePrint}>Скачати</DownloadButton>
+      <DownloadButtonStyle onClick={handlePrint}>Скачати</DownloadButtonStyle>
       <CVStyle ref={cvRef}>
-        <LeftBar>
+        <LeftBarStyle>
           <Avatar>U</Avatar>
           <PersonalInfo />
           <Skills />
-        </LeftBar>
-        <MainContent>
+        </LeftBarStyle>
+        <MainContentStyle>
           <Title level={1} size='large'>
             Микола Володимирович
           </Title>
-          <Position>Frontend developer</Position>
+          <PositionStyle>Frontend developer</PositionStyle>
           <Education />
           <WorkExperience />
-        </MainContent>
+        </MainContentStyle>
       </CVStyle>
     </>
   );
