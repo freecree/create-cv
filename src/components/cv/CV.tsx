@@ -13,12 +13,14 @@ import {
   MainContentStyle,
   PositionStyle,
 } from './CVStyle';
+import { useAppSelector } from '../../hooks/redux-hooks';
 
 function CV() {
   const cvRef = useRef(null);
   const handlePrint = useReactToPrint({
     content: () => cvRef.current,
   });
+  const name = useAppSelector((state) => state.personalInfo.name);
 
   return (
     <>
@@ -32,7 +34,7 @@ function CV() {
         <MainContentStyle>
           <div>
             <Title level={1} size='large'>
-              Микола Володимирович
+              {name}
             </Title>
             <PositionStyle>Frontend developer</PositionStyle>
           </div>

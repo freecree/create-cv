@@ -5,7 +5,6 @@ import { CloseOutlined } from '@ant-design/icons';
 import locale from 'antd/es/date-picker/locale/uk_UA';
 import 'dayjs/locale/uk';
 import { useAppDispatch } from '../../hooks/redux-hooks';
-import { useAppSelector } from '../../hooks/redux-hooks';
 import { Work } from '../../slices/workSlice';
 import {
   removeWork,
@@ -25,9 +24,6 @@ interface WorkCardProps {
 
 function WorkCard({ field, index }: WorkCardProps) {
   const dispatch = useAppDispatch();
-
-  const workState = useAppSelector((state) => state.work);
-  console.log('Works in state: ', workState.works);
 
   const handleRemoveWork = (id: string) => {
     dispatch(removeWork(id));

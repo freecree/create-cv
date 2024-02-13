@@ -3,26 +3,29 @@ import { CalendarOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
 import SubTitle from '../sub-title/SubTitle';
 import { AccentStyle } from '../CVStyle';
+import type { Work } from '../../../slices/workSlice';
 
 const { Paragraph } = Typography;
 
-function WorkCard() {
+function WorkCard({ work }: { work: Work }) {
   return (
     <WorkCardStyle>
       <div>
         <SubTitle>
-          <AccentStyle> Frontend developer</AccentStyle>
+          <AccentStyle>{work.position}</AccentStyle>
         </SubTitle>
-        <SubTitle>Softserve</SubTitle>
+        <SubTitle>{work.company}</SubTitle>
         <WorkDescriptionStyle>
           <AccentStyle>
             <CalendarOutlined />
           </AccentStyle>
           <Paragraph>
-            <AccentStyle>01.02.2024 - 02.03.2024</AccentStyle>
+            <AccentStyle>
+              {work.workPeriod[0]} - {work.workPeriod[1]}
+            </AccentStyle>
           </Paragraph>
         </WorkDescriptionStyle>
-        <Paragraph>Опис</Paragraph>
+        <Paragraph>{work.description}</Paragraph>
       </div>
     </WorkCardStyle>
   );

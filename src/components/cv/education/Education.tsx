@@ -5,10 +5,17 @@ import { Typography } from 'antd';
 import Title from '../title/Title';
 import SubTitle from '../sub-title/SubTitle';
 import { AccentStyle } from '../CVStyle';
+import { useAppSelector } from '../../../hooks/redux-hooks';
 
 const { Paragraph } = Typography;
 
 function Education() {
+  const institution = useAppSelector((state) => state.education.institution);
+  const degree = useAppSelector((state) => state.education.degree);
+  const graduateionDate = useAppSelector(
+    (state) => state.education.graduationDate,
+  );
+
   return (
     <EducationStyle>
       <SectionHeading>
@@ -17,11 +24,11 @@ function Education() {
       </SectionHeading>
       <div>
         <SubTitle>
-          <AccentStyle> Київський політехнічний інститут</AccentStyle>
+          <AccentStyle>{institution}</AccentStyle>
         </SubTitle>
-        <Paragraph>Магістр</Paragraph>
+        <Paragraph>{degree}</Paragraph>
         <Paragraph>
-          Дата закінчення - <AccentStyle>01.01.2024</AccentStyle>
+          Дата закінчення - <AccentStyle>{graduateionDate}</AccentStyle>
         </Paragraph>
       </div>
     </EducationStyle>

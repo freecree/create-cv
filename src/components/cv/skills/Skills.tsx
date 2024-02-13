@@ -3,8 +3,11 @@ import { ToolOutlined } from '@ant-design/icons';
 import SectionHeading from '../section-heading/SectionHeading';
 import { Tag, Space } from 'antd';
 import Title from '../title/Title';
+import { useAppSelector } from '../../../hooks/redux-hooks';
 
 function Skills() {
+  const skills = useAppSelector((state) => state.skills.skills);
+
   return (
     <SkillsStyle>
       <SectionHeading>
@@ -12,10 +15,11 @@ function Skills() {
         <Title size='medium'>Навички</Title>
       </SectionHeading>
       <Space direction='vertical'>
-        <Tag color='blue'>React</Tag>
-        <Tag color='blue'>Typescript</Tag>
-        <Tag color='blue'>Redux Toolkit</Tag>
-        <Tag color='blue'>SCSS</Tag>
+        {skills.map((skill, i) => (
+          <Tag key={i} color='blue'>
+            {skill}
+          </Tag>
+        ))}
       </Space>
     </SkillsStyle>
   );
