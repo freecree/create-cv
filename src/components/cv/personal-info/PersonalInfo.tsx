@@ -1,22 +1,23 @@
-import { PersonalInfoStyle } from './PersonalInfoStyle';
+import { HeadingStyle, PersonalInfoStyle } from './PersonalInfoStyle';
 import { Space } from 'antd';
 import { Typography } from 'antd';
 import { EnvironmentOutlined } from '@ant-design/icons';
+import SubTitle from '../sub-title/SubTitle';
 
-const { Title, Paragraph } = Typography;
+const { Paragraph } = Typography;
 
 function PersonalInfo() {
   return (
     <PersonalInfoStyle>
       <Space direction='vertical'>
-        <Title level={3}>Вік</Title>
+        <SubTitle>Вік</SubTitle>
         <Paragraph>23 роки (27.10.2000)</Paragraph>
       </Space>
       <Space direction='vertical'>
-        <Space align='center'>
+        <HeadingStyle align='center'>
           <EnvironmentOutlined />
-          <Title level={3}>Місце проживання</Title>
-        </Space>
+          <SubTitle>Місце проживання</SubTitle>
+        </HeadingStyle>
         <Paragraph>Київ</Paragraph>
       </Space>
     </PersonalInfoStyle>

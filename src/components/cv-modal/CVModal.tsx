@@ -24,9 +24,9 @@ function CVModal() {
       />
       <CVModalStyle
         open={isOpenPreviewCV}
-        footer=''
+        footer={''}
         onCancel={handleCancel}
-        width={1000}
+        width={820}
       >
         <CV />
       </CVModalStyle>

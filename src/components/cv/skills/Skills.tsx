@@ -9,7 +9,6 @@ function Skills() {
     <SkillsStyle>
       <SectionHeading>
         <ToolOutlined />
-        {/* <SectionTitle>Навички</SectionTitle> */}
         <Title size='medium'>Навички</Title>
       </SectionHeading>
       <Space direction='vertical'>

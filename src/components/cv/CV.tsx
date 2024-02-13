@@ -11,7 +11,7 @@ import {
   DownloadButtonStyle,
   LeftBarStyle,
   MainContentStyle,
-  PositionStyle
+  PositionStyle,
 } from './CVStyle';
 
 function CV() {
@@ -30,10 +30,12 @@ function CV() {
           <Skills />
         </LeftBarStyle>
         <MainContentStyle>
-          <Title level={1} size='large'>
-            Микола Володимирович
-          </Title>
-          <PositionStyle>Frontend developer</PositionStyle>
+          <div>
+            <Title level={1} size='large'>
+              Микола Володимирович
+            </Title>
+            <PositionStyle>Frontend developer</PositionStyle>
+          </div>
           <Education />
           <WorkExperience />
         </MainContentStyle>

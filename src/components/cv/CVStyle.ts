@@ -12,6 +12,9 @@ export const CVStyle = styled.div`
   & .ant-typography {
     margin: 0;
   }
+  & .ant-typography + .ant-typography {
+    margin: 0;
+  }
 `;
 
 export const DownloadButtonStyle = styled(Button)`
@@ -39,8 +42,13 @@ export const MainContentStyle = styled.div`
 `;
 
 export const PositionStyle = styled(Paragraph)`
-  color: ${colors.dark};
-  padding-bottom: 10px;
-  border-bottom: 2px solid ${colors.dark};
+  color: ${colors.main};
+  padding-bottom: 5px;
+  border-bottom: 2px solid ${colors.main};
   font-size: 16px;
+  font-weight: 700;
+`;
+
+export const AccentStyle = styled.span`
+  color: ${colors.main};
 `;
