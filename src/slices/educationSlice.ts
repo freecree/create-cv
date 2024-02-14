@@ -3,13 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 export interface EducationState {
   institution: string;
   graduationDate: string;
-  degree: 'bachelor' | 'master';
+  degree: 'бакалавр' | 'магістр';
 }
 
 const initialState: EducationState = {
   institution: '',
   graduationDate: '',
-  degree: 'bachelor',
+  degree: 'бакалавр',
 };
 
 export const educationSlice = createSlice({
