@@ -4,7 +4,8 @@ import { Typography } from 'antd';
 import { EnvironmentOutlined, PhoneOutlined } from '@ant-design/icons';
 import SubTitle from '../sub-title/SubTitle';
 import { useAppSelector } from '../../../hooks/redux-hooks';
-import { calculateAge, getPluralYears } from './utils';
+import { getPluralYears } from './utils';
+import dayjs from 'dayjs';
 
 const { Paragraph } = Typography;
 
@@ -13,7 +14,8 @@ function PersonalInfo() {
   const location = useAppSelector((state) => state.personalInfo.location);
   const phone = useAppSelector((state) => state.personalInfo.phone);
 
-  const age = calculateAge(birthDate);
+  const today = dayjs();
+  const age = today.diff(birthDate, 'year');
 
   return (
     <PersonalInfoStyle>
