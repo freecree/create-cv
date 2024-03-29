@@ -1,31 +1,18 @@
-import { useState } from 'react';
 import { CVModalStyle } from './CVModalStyle';
-import { CVButtonStyle } from './CVModalStyle';
 import CV from '../cv/CV';
 
-function CVModal() {
-  const [isOpenPreviewCV, setIsOpenPreviewCV] = useState(false);
+interface CVModalProps {
+  isModalOpen: boolean;
+  onCancel?: () => void;
+}
 
-  const showCVPreview = () => {
-    setIsOpenPreviewCV(true);
-  };
-
-  const handleCancel = () => {
-    setIsOpenPreviewCV(false);
-  };
-
+function CVModal({ isModalOpen, onCancel }: CVModalProps) {
   return (
     <>
-      <CVButtonStyle
-        type='primary'
-        description="Показати прев'ю"
-        shape='circle'
-        onClick={showCVPreview}
-      />
       <CVModalStyle
-        open={isOpenPreviewCV}
+        open={isModalOpen}
         footer={''}
-        onCancel={handleCancel}
+        onCancel={onCancel}
         width={820}
       >
         <CV />

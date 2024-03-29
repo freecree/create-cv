@@ -12,6 +12,7 @@ import {
   setBirth,
   setAvatar,
 } from '../../slices/personalInfoSlice';
+import PhoneCountryInput from '../phone-input/PhoneInput';
 
 function PersonalInfo() {
   const dispatch = useAppDispatch();
@@ -22,9 +23,11 @@ function PersonalInfo() {
   const handleChangeLocation = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(setLocation(e.target.value));
   };
-  const handleChangePhone = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setPhone(e.target.value));
+
+  const handleChangePhone = (phoneValue: string) => {
+    dispatch(setPhone(phoneValue));
   };
+
   const handleChangeBirth: DatePickerProps['onChange'] = (_, dateString) => {
     dispatch(setBirth(dateString));
   };
@@ -36,19 +39,31 @@ function PersonalInfo() {
     <div>
       <FormSectionTitle>Персональна інформація</FormSectionTitle>
       <FormSectionWrapper>
-        <Form.Item name={'name'} label='Фіо'>
+        <Form.Item name={'name'} label='Фіо' rules={[{ required: true }]}>
           <Input onChange={handleChangeName} placeholder='Фіо' />
         </Form.Item>
-        <Form.Item name={'location'} label='Місце проживання'>
+        <Form.Item
+          name={'location'}
+          label='Місце проживання'
+          rules={[{ required: true }]}
+        >
           <Input
             onChange={handleChangeLocation}
             placeholder='Місце проживання'
           />
         </Form.Item>
-        <Form.Item label='Номер телефону'>
-          <Input onChange={handleChangePhone} placeholder='Номер телефону' />
+        <Form.Item
+          label='Номер телефону'
+          name='phone'
+          rules={[{ required: true }]}
+        >
+          <PhoneCountryInput onChange={handleChangePhone} />
         </Form.Item>
-        <Form.Item name='birh' label='Дата народження'>
+        <Form.Item
+          name='birh'
+          label='Дата народження'
+          rules={[{ required: true }]}
+        >
           <DatePicker
             onChange={handleChangeBirth}
             placeholder='Дата народження'

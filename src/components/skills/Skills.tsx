@@ -17,7 +17,9 @@ function Skills() {
       <FormSectionWrapper>
         <Form.Item
           label='Вміння'
+          name={'skills'}
           style={{ width: 'fit-content', minWidth: '170px' }}
+          rules={[{ required: true, message: 'Оберіть Ваші вміння' }]}
         >
           <Select
             placeholder='Оберіть вміння'
