@@ -1,34 +1,34 @@
 export const skillsOptions = [
   {
-    value: 'react',
+    value: 'React',
     label: 'React',
   },
   {
-    value: 'angular',
+    value: 'Angular',
     label: 'Angular',
   },
   {
-    value: 'vue',
+    value: 'Vue',
     label: 'Vue',
   },
   {
-    value: 'typescript',
+    value: 'Typescript',
     label: 'Typescript',
   },
   {
-    value: 'sass/scss',
+    value: 'Sass/Scss',
     label: 'Sass/Scss',
   },
   {
-    value: 'redux',
+    value: 'Redux',
     label: 'Redux',
   },
   {
-    value: 'redux-toolkit',
+    value: 'Redux-toolkit',
     label: 'Redux Toolkit',
   },
   {
-    value: 'nodejs',
+    value: 'Nodejs',
     label: 'NodeJS',
   },
 ];

@@ -30,11 +30,11 @@ function Education() {
 
   const degreeOptions = [
     {
-      value: 'master',
+      value: 'магістр',
       label: 'Магістр',
     },
     {
-      value: 'bachelor',
+      value: 'бакалавр',
       label: 'Бакалавр',
     },
   ];

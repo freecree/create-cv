@@ -5,7 +5,6 @@ import { CloseOutlined } from '@ant-design/icons';
 import locale from 'antd/es/date-picker/locale/uk_UA';
 import 'dayjs/locale/uk';
 import { useAppDispatch } from '../../hooks/redux-hooks';
-import { useAppSelector } from '../../hooks/redux-hooks';
 import { Work } from '../../slices/workSlice';
 import {
   removeWork,
@@ -26,9 +25,6 @@ interface WorkCardProps {
 function WorkCard({ field, index }: WorkCardProps) {
   const dispatch = useAppDispatch();
 
-  const workState = useAppSelector((state) => state.work);
-  console.log('Works in state: ', workState.works);
-
   const handleRemoveWork = (id: string) => {
     dispatch(removeWork(id));
   };
@@ -47,13 +43,11 @@ function WorkCard({ field, index }: WorkCardProps) {
   ) => {
     dispatch(setWorkPeriod({ id: field.id, value: dateStrings }));
   };
-
   const handleChangeDescription = (
     e: React.ChangeEvent<HTMLTextAreaElement>,
   ) => {
     dispatch(setDescription({ id: field.id, value: e.target.value }));
   };
-
   return (
     <WorkCardStyle
       size='small'
@@ -64,20 +58,24 @@ function WorkCard({ field, index }: WorkCardProps) {
         )
       }
     >
-      <Form.Item label='Компанія'>
+      <Form.Item label='Компанія' name={[`work${index}`, 'company']}>
         <Input onChange={handleChangeCompany} placeholder='Компанія' />
       </Form.Item>
-      <Form.Item label='Посада'>
+      <Form.Item label='Посада' name={['work', 'position']}>
         <Input onChange={handleChangePosition} placeholder='Посада' />
       </Form.Item>
-      <Form.Item label='Період роботи'>
+      <Form.Item label='Період роботи' name={['work', 'period']}>
         <RangePicker
           onChange={handleChangeWorkPeriod}
           locale={locale}
           placeholder={['Початок', 'Кінець']}
         />
       </Form.Item>
-      <Form.Item label='Опис'>
+      <Form.Item
+        label='Опис'
+        name={[`work`, 'description']}
+        rules={[{ min: 12 }]}
+      >
         <TextArea rows={4} onChange={handleChangeDescription} />
       </Form.Item>
     </WorkCardStyle>
